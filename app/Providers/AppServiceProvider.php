@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('viewApiDocs', function ($user = null) {
             return true; // Allow access to API documentation for all users, including guests
         });
-        if (config('app.env') === 'production') {
+        if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
     }
